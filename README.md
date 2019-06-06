@@ -2,8 +2,8 @@ ISA525700 Computer Vision for Visual Effects
 Assignment 6: multi-view 3D visual effects
 
 
-#好讀版網址(格式易讀，影片可直接預覽):https://hackmd.io/e3dCTMIlSd6pyDSXsri2OA?both
-
+# 好讀版網址(格式易讀，影片可直接預覽):https://hackmd.io/e3dCTMIlSd6pyDSXsri2OA?both
+===
 ISA525700 Computer Vision for Visual Effects
 Assignment 6: multi-view 3D visual effects
 Team 24
@@ -35,10 +35,11 @@ Team 24
         - fx和fy需要查詢自己相機的focal length規格(EX: 下圖為samsung s7故其規格為26mm~98.267717 pixels)。
         - cx以及cy代表，相機中心點，這裡假設沒有偏移量，故相機中心點就是最後相片的中心位置(EX: samsung s7拍攝出來的相片是1920x1080，故其中心位置及為(960,540))
         ![reference link](https://i.imgur.com/H0RqpVT.png)
+    -  參照助教給的參考資料，用ORB-SLAM將key frame trajectory抓出來，執行指令以後會出現如下的畫面
+    ![](https://i.imgur.com/tRiTb1f.jpg)
 
-
-    - 參照助教給的參考資料，用ORB-SLAM將key frame trajectory抓出來
-    其生成檔案KeyFrameTrajectory.txt內容如下：
+    
+        - 其生成檔案KeyFrameTrajectory.txt內容如下：
     ![](https://i.imgur.com/IIP78FR.jpg)
         - 第一直行為時間戳記
         - 第二行到第四行 為目前相機在空間的位移(Extrinsic matrix中位移的部分)
@@ -49,6 +50,8 @@ Team 24
         $qw = cos(RotationAngle / 2)$
         上式的RotationAngle代表的是弧度
         而使用orientation form來計算角位移，主要是可避免像是[Gimbal Lock](https://www.youtube.com/watch?v=zc8b2Jo7mno)的問題(先轉x軸再轉y軸 和 先轉y軸再轉x軸會有不同結果)，計算起來也較方便
+
+    
 
     - 將之前影片切好的frame依序讀入，並根據KeyFrameTrajectory.txt內容得知key frame中的相機位置
     - 將剩下不是key frame的相機位置內差出來。
